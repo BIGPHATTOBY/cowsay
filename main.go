@@ -7,6 +7,13 @@ import (
 )
 
 func main() {
+	berta := `
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+`
 	say := os.Args[1]
 	lineMax := int(40)
 	lines := float64(len(say)) / float64(lineMax)
@@ -73,6 +80,8 @@ func main() {
 		fmt.Print(" ")
 		for i := 0; i < longestString+2; i++ {
 			fmt.Print("-")
+
 		}
 	}
+	fmt.Print(berta)
 }
