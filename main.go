@@ -20,7 +20,7 @@ func main() {
 		for i := 0; i < len(say)+2; i++ {
 			fmt.Print("-")
 		}
-	} else if lines > 2 {
+	} else {
 		words := strings.Fields(say)
 		wordLength := ""
 		var s []string
@@ -61,10 +61,6 @@ func main() {
 					fmt.Print(" ")
 				}
 				fmt.Print(" /\n")
-				fmt.Print(" ")
-				for i := 0; i < longestString+2; i++ {
-					fmt.Print("-")
-				}
 			} else {
 				fmt.Print("| " + line)
 				for i := 0; i < longestString-len(line); i++ {
@@ -74,7 +70,9 @@ func main() {
 			}
 			lineCount++
 		}
-	} else {
-
+		fmt.Print(" ")
+		for i := 0; i < longestString+2; i++ {
+			fmt.Print("-")
+		}
 	}
 }
