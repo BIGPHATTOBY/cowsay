@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os"
 	"strings"
 )
@@ -10,11 +12,22 @@ func main() {
 	berta := `
         \   ^__^
          \  (oo)\_______
-            (__)\       )\/\
+            (__)\       )\/T
                 ||----w |
                 ||     ||
 `
-	say := os.Args[1]
+	say := "You suck"
+	stat, _ := os.Stdin.Stat()
+	if len(os.Args) >= 2 {
+		say = os.Args[1]
+	} else if (stat.Mode() & os.ModeNamedPipe) != 0 {
+		reader, err := ioutil.ReadAll(os.Stdin)
+		if err != nil {
+			log.Fatal(err)
+		}
+		say = string(reader)
+	}
+	say = strings.TrimSuffix(say, "\n")
 	lineMax := int(40)
 	lines := float64(len(say)) / float64(lineMax)
 	if lines < 1 {
